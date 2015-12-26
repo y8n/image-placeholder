@@ -32,7 +32,7 @@ var canvas = placeholder.getCanvas({
 	width:200
 });
 // get base64 data
-var base64Data = placeholder.getCanvas({
+var base64Data = placeholder.getBase64Data({
 	height:120,
 	width:200,
 	icon:true
