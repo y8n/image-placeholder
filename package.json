@@ -1,0 +1,25 @@
+{
+  "name": "image-placeholder",
+  "version": "0.0.1",
+  "description": "image's placeholder",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yangjiyuan/image-placeholder.git"
+  },
+  "keywords": [
+    "image",
+    "placeholder"
+  ],
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.1"
+  },
+  "author": "YangJiyuan <yjy972080142@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yangjiyuan/image-placeholder/issues"
+  },
+  "homepage": "https://github.com/yangjiyuan/image-placeholder#readme"
+}
