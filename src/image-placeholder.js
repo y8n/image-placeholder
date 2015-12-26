@@ -114,7 +114,6 @@
     placeholder.getBase64Data = function (options) {
         var canvas = placeholder.getCanvas(options);
         if(canvas.available){
-            console.log(canvas.toDataURL())
             return canvas.toDataURL();
         }
         return '';

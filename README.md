@@ -4,7 +4,7 @@ Image's placeholder.If image loading failure,placeholder image will shown in ima
  
 图像占位符。当图片加载失败的时候，占位符图片会显示在失败的图片位置上。
 
-## Import Script [Download]()
+## Import Script [Download](https://raw.githubusercontent.com/yangjiyuan/image-placeholder/master/dist/image-placeholder.min.js)
 
 ```
 <script src="path/to/image-placeholder/image-placeholder(.min).js"></script>
