@@ -41,23 +41,23 @@ var base64Data = placeholder.getBase64Data({
 ## Options
 - **width** : placeholder's width
 	- type:`number`
-	- default: if use `placeholder` function,default value id image node's width.if use `placeholder.getCanvas` or `placeholder.getBase64Data` no default value and `width` is required.
+	- default: if use `placeholder` function,default value is image's width.if use `placeholder.getCanvas` or `placeholder.getBase64Data` no default value and `width` is required.
 
 - **height**:placeholder's height
 	- type:`number`
-	- default: if use `placeholder` function,default value id image node's height use `placeholder.getCanvas` or `placeholder.getBase64Data` no default value and `height ` is required.
+	- default: if use `placeholder` function,default value is image's height.if use `placeholder.getCanvas` or `placeholder.getBase64Data` no default value and `height ` is required.
 	
 - **icon**:show icon or not.
 	- type:`boolean`
-	- default:`true`
+	- default:`false`
 
-- **iconWidth**:icon's width when `icon` is set to `true
+- **iconWidth**:icon's width when `icon` is set to be `true`
 	- type:`number`
-	- default:15% of the canvas's width 
+	- default:15% of the placeholder's width 
 
-- **iconHeight**:icon's height when `icon` is set to `true
+- **iconHeight**:icon's height when `icon` is set to be `true`
 	- type:`number`
-	- default:15% of the canvas's height 
+	- default:15% of the placeholder's height 
 
 - **text**:text shown on the placeholder
 	- type:`string`
@@ -65,7 +65,7 @@ var base64Data = placeholder.getBase64Data({
 
 - **fontSize**:font size of the text
 	- type : `number`
-	- default : 15% of the minimum between canvas's width and height
+	- default : 15% of the minimum between placeholder's width and height
 
 - **bgColor**:background color of the placeholder
 	- type : `string`
