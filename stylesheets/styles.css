@@ -19,7 +19,7 @@ body {
 }
 
 .wrapper {
-  width: 640px;
+  width: 800px;
   margin: 0 auto;
   background: #DEDEDE;
   -webkit-border-radius: 8px;
@@ -354,3 +354,53 @@ footer p + p {
     content: 'at https://github.com/';
   }
 }
+
+/* my style */
+.container{
+  position: relative;
+}
+.code{
+  width: 300px;
+  background: #ddd;
+  color: #000;
+  margin-left: 5px;
+  border-radius: 5px;
+}
+.code > .options{
+  display: inline-block;
+  margin: 5px 0;
+  /*position: relative;*/
+}
+.options-key{
+  width: 90px;
+  display: inline-block;
+}
+.options input[type="number"],
+.options input[type="text"]{
+  outline: none;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  height: 20px;
+  width: 150px;
+}
+input[disabled],
+input.disabled{
+  cursor: no-drop;
+}
+.image{
+  position: absolute;
+  left: 370px;
+  top: 0;
+  width: calc(100% - 370px);
+    height: 100%;
+}
+.image > img{
+  position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+
