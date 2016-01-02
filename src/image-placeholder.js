@@ -1,5 +1,5 @@
 /*!
- * 图片占位符 v0.0.1
+ * 图片占位符 v0.1.0
  * http://github.com/yangjiyuan/image-placeholder
  *
  * Copyright (c) 2015, YangJiyuan <yjy972080142@gmail.com>
@@ -9,12 +9,7 @@
 'use strict';
 
 (function(doc,win){
-    var cache = {}, /* 缓存上一次生成canvas的宽高和base64，如果下一次和上一次的宽高一样，
-                      也就是连续两次的图大小一样，那么canvas就不用再生成一次，直接获取缓存的。
-                      因为当有大量的图片时，尤其是统一格式的图片列表，这种情况下，图片的宽高都一样，
-                      没有必要每一个图片都生成一次canvas，而是只需要获取上一次缓存的就行，性能会好一点。
-                      但是同时由于闭包的原因，全局变量DEFAULT_MARGIN等都需要重置。cache也要在每一次调用的时候清空*/
-        DEFAULT_MARGIN = 0,
+    var DEFAULT_MARGIN = 0,
         TEXT_COLOR,//文本颜色
         BG_COLOR; //背景颜色
     var placeholder = function (element,options) {
@@ -24,7 +19,13 @@
         if(!options){
             options = {};
         }
-        cache = {}; //每新调用一次函数，清空一次缓存
+        options.cache = {};
+        /* 每新调用一次函数，初始化一次缓存
+         缓存上一次生成canvas的宽高和base64，如果下一次和上一次的宽高一样，
+         也就是连续两次的图大小一样，那么canvas就不用再生成一次，直接获取缓存的。
+         因为当有大量的图片时，尤其是统一格式的图片列表，这种情况下，图片的宽高都一样，
+         没有必要每一个图片都生成一次canvas，而是只需要获取上一次缓存的就行，性能会好一点。
+         但是同时由于闭包的原因，全局变量DEFAULT_MARGIN等都需要重置。cache也要在每一次调用的时候清空*/
         if('string' === typeof element){
             element = doc.querySelectorAll(element);
         }else if('undefined' === typeof element.length){
@@ -45,7 +46,19 @@
         if(!element){
             return;
         }
-        element.onerror = function () {
+        var src = element.getAttribute('src');
+        if(!element.hasOwnProperty('originalSrc')){
+            element.originalSrc = src;
+        }
+        element.image = doc.createElement('img');
+        element.image.setAttribute('src',element.originalSrc);
+        if(typeof element.opts === 'undefined'){
+            element.opts = [options];
+        }else{
+            element.opts.push(options);
+        }
+        element.image.onerror = function () {
+            options = element.opts.slice(-1)[0] || {};
             var style;
             try{
                 style = win.getComputedStyle(element);
@@ -56,15 +69,16 @@
             options.width = parseInt(style.width,10);
             var base64Data,key;
             key = options.height + ':' + options.width;
-            if(key in cache){
-                base64Data = cache[key];
+            if(key in options.cache){
+                base64Data = options.cache[key];
             }else{
                 base64Data = placeholder.getBase64Data(options);
-                cache[key] = base64Data;
+                options.cache[key] = base64Data;
             }
             if(base64Data){
                 element.src = base64Data;
             }
+            element.image.onerror = null;
         };
     }
     win.placeholder = placeholder;
